@@ -186,6 +186,7 @@ class ViewController: UIViewController {
             UITextField.keyboardType = .decimalPad
         }
         
+        
         let okAction = UIAlertAction(title: "OK", style: .default) { [self, unowned alertController] _ in
             
             self.resultArray[0].time = alertController.textFields?[0].text
@@ -202,10 +203,15 @@ class ViewController: UIViewController {
                 self.countDown(duration: Double(self.resultArray[0].time)!)
             }
             
-
         }
+        let backAction = UIAlertAction(title: "Back", style: .default, handler:{ _ in
+            self.navigationController?.popViewController(animated: true)
+        })
+        
+        alertController.addAction(backAction)
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
+        
         
         
     }
